@@ -1,0 +1,53 @@
+﻿@model IEnumerable<WebApplication04G.Models.Fees>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Student Fees</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.SMonth)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FAmount)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Student)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.SMonth)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FAmount)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Student.SName)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.id">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.id">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
